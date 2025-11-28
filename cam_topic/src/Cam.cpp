@@ -5,9 +5,7 @@ CAM::CAM(int cam_number) : Node("cam") {
         pub_l = this->create_publisher<sensor_msgs::msg::Image>("camera_l", 10);
         pub_r = this->create_publisher<sensor_msgs::msg::Image>("camera_r", 10);
     } else
-
         pub = this->create_publisher<sensor_msgs::msg::Image>("camera", 10);
-
     timer_ = this->create_wall_timer(
         std::chrono::milliseconds(100), std::bind(&CAM::timer_callback, this));
     cap.open(cam_number, cv::CAP_V4L2);
@@ -23,7 +21,6 @@ CAM::CAM() : Node("cam") {
         pub_r = this->create_publisher<sensor_msgs::msg::Image>("camera_r", 10);
     } else
         pub = this->create_publisher<sensor_msgs::msg::Image>("camera", 10);
-
     timer_ = this->create_wall_timer(
         std::chrono::milliseconds(100), std::bind(&CAM::timer_callback, this));
     cap.open(0, cv::CAP_V4L2);
